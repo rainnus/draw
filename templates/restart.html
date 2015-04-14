@@ -1,0 +1,26 @@
+{% extends "adminBase.html" %}
+{% block script %}
+    <script type="application/javascript">
+        $(document).ready(function () {
+            {#        $("#1").html('<div class="alert alert-danger" id="1" role="alert">重新开始会删除用户已经抽取的数据，确定重新开始？</div>');#}
+            $("button").click(function () {
+
+                $.ajax({url:{% url "draw.views.restart" %}, success: function () {
+                    $("#1").remove();
+                    $("#restart").before('<div class="alert alert-success" id="1">成功重置数据</div>');
+                    $("#restart").remove();
+                }
+                });
+
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block active3 %}
+    active
+{% endblock %}
+{% block content %}
+    <div class="alert alert-danger" id="1" role="alert">重新开始会删除用户已经抽取的数据，确定重新开始？</div>
+    <button type="button" class=" btn btn-danger" id="restart">确定</button>
+{% endblock %}

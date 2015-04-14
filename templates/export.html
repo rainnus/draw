@@ -1,0 +1,26 @@
+{% extends "adminBase.html" %}
+{% block script %}
+    <script type="application/javascript">
+        $(document).ready(function () {
+            {#        $("#1").html('<div class="alert alert-danger" id="1" role="alert">重新开始会删除用户已经抽取的数据，确定重新开始？</div>');#}
+            $("button").click(function () {
+                    window.location.replace("/export/");
+{#                $.ajax({url:{% url "draw.views.export" %}, success: function () {#}
+                    $("#1").remove();
+                    $("#export").before('<div class="alert alert-success" id="1">成功导出名单(抽取号码为零则为未抽取)</div>');
+                    $("#export").remove();
+{#                }#}
+{#                });#}
+
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block active2 %}
+    active
+{% endblock %}
+{% block content %}
+    <div class="alert alert-info" id="1" role="alert">确定重新导出名单？</div>
+    <button type="button" class=" btn btn-info" id="export">确定</button>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "adminBase.html" %}
+
+{% block script %}
+    <script>
+        $(document).ready(function(){
+            var i = 0;
+            $('#1').click(function(){
+                var a = document.getElementsByClassName('9');
+                $.ajax('/searchTest/?IDCard=' + a[i].innerHTML);
+                i = i+1;
+
+            });
+        });
+    </script>
+{% endblock %}
+{% block content %}
+    <ul>
+    {% for user in stu %}
+        <li class="9">{{ user.IDCard }}</li>
+    {% endfor %}
+    </ul>
+
+    <button id="1">hello</button>
+{% endblock %}

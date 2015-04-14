@@ -1,0 +1,42 @@
+<html>
+<head lang="zh-CN">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{% block title %}抽签{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <script type="application/javascript" src="/static/js/jQuery.js"></script>
+    <script type="application/javascript" src="/static/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="col-md-2 col-md-offset-5">
+        <div class="row" style="margin-top: 40%;">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    {% block content %}
+                        {% if message %}
+                            <div class="alert alert-danger" role="alert">{{ message }}</div>
+                         {% endif %}
+                        <form action="/searchTest/" method="get">
+{#                            {% csrf_token %}#}
+                            <div class="form-group">
+                                <label for="InputIDCard">请输入身份证号</label>
+                                <input type="text" class="form-control" name="IDCard" id="InputIDCard"
+                                       placeholder="身份证号">
+                            </div>
+                            {#                <div class="form-group">#}
+                            {#                    <label for="exampleInputPassword1">Password</label>#}
+                            {#                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">#}
+                            {#                </div>#}
+                            <button type="submit" class="btn btn-default">抽签</button>
+                        </form>
+
+                    {% endblock %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

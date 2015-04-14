@@ -1,0 +1,55 @@
+<html>
+<head lang="zh-CN">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{% block title %}管理{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <script type="application/javascript" src="/static/js/jQuery.js"></script>
+    <script type="application/javascript" src="/static/js/bootstrap.js"></script>
+{% block script %}
+{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+{#        <img alt="Brand" src="...">#}
+      </a>
+    </div>
+    <div class="collapse navbar-collapse ">
+        <ul class="nav navbar-nav navbar-right">
+            <li><p class="navbar-text">欢迎您：{{ adminName }}</p></li>
+            <li><a href="/logout/">退出登录</a></li>
+        </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+    <div class="col-md-3">
+        <div class="row">
+            <div class="col-md-11">
+                <div class="list-group">
+                <a href="/adminView/" class="list-group-item {% block active1 %}{% endblock %}">
+                    所有学生
+                </a>
+                <a href="/exportView/" class="list-group-item{% block active2 %}{% endblock %}">导出名单</a>
+{#                <a href="/importView/" class="list-group-item{% block active3 %}{% endblock %}">导入名单</a>#}
+                <a href="/restartView/" class="list-group-item{% block active3 %}{% endblock %}">重新抽取</a>
+{#                <a href="#" class="list-group-item">Porta ac consectetur ac</a>#}
+{#                <a href="#" class="list-group-item">Vestibulum at eros</a>#}
+            </div>
+            </div>
+
+{#            <div class="col-md-1"></div>#}
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

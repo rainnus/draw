@@ -1,0 +1,26 @@
+{% extends "adminBase.html" %}
+{% block script %}
+    <script type="application/javascript">
+        $(document).ready(function () {
+            {#        $("#1").html('<div class="alert alert-danger" id="1" role="alert">重新开始会删除用户已经抽取的数据，确定重新开始？</div>');#}
+            $("button").click(function () {
+
+                $.ajax({url:{% url "draw.views.myimport" %}, success: function () {
+                    $("#1").remove();
+                    $("#import").before('<div class="alert alert-success" id="1">成功导入名单,为了安全请点击<a href="/restartView/">重新抽取<a></div>');
+                    $("#import").remove();
+                }
+                });
+
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block active3 %}
+    active
+{% endblock %}
+{% block content %}
+    <div class="alert alert-danger" id="1" role="alert">导入名单会删除已有名单，确定导入？</div>
+    <button type="button" class=" btn btn-danger" id="import">确定</button>
+{% endblock %}
